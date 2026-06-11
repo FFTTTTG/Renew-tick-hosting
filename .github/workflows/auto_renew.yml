@@ -2,7 +2,7 @@ name: Auto Renew Tickhosting
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # 每4天运行一次（96小时）,在UTC时间00:00运行
+    - cron: '0 */4 * * *'
   workflow_dispatch: 
 
 permissions:
@@ -53,5 +53,4 @@ jobs:
         git checkout main
         git add last_renew_data.txt
         git diff --cached --exit-code || git commit -m "Auto Update by Github Actions"
-        git pull --rebase origin main || true
         git push origin main
